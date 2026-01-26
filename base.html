@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanAir - IoT Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-wind"></i>
+            </div>
+            <div class="logo-text">
+                <h1>UrbanAir</h1>
+                <span>IOT PREDICTOR</span>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link active">
+                    <i class="fa-solid fa-grid-2"></i> <!-- Dashboard Icon -->
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="analytics.html" class="nav-link">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="sensors.html" class="nav-link">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <span>Sensors</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="blog.html" class="nav-link">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Blog</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="system-status">
+            <div class="status-indicator">
+                <div class="dot"></div>
+                <span>All Sensors Online</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                <input type="text" placeholder="Search street or address for local AQI...">
+            </div>
+
+            <div class="user-profile">
+                <!-- Simple user placeholder -->
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button style="background: none; border: none; color: #fff; margin-right: 10px; cursor: pointer;">
+                        <i class="fa-solid fa-bell" style="font-size: 18px;"></i>
+                    </button>
+                    <div style="text-align: right;">
+                        <div style="font-weight: 600; font-size: 14px;">Alex Rivera</div>
+                        <div style="font-size: 10px; color: var(--success);">Environmental Lead</div>
+                    </div>
+                    <div style="width: 36px; height: 36px; background: #333; border-radius: 50%; overflow: hidden;">
+                        <img src="https://ui-avatars.com/api/?name=Alex+Rivera&background=0D8ABC&color=fff" alt="User">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="dashboard-container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - UrbanAir - IoT Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-wind"></i>
+            </div>
+            <div class="logo-text">
+                <h1>UrbanAir</h1>
+                <span>IOT PREDICTOR</span>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link active">
+                    <i class="fa-solid fa-grid-2"></i> <!-- Dashboard Icon -->
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="analytics.html" class="nav-link">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <span>Analytics</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="sensors.html" class="nav-link">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <span>Sensors</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="blog.html" class="nav-link">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Blog</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="system-status">
+            <div class="status-indicator">
+                <div class="dot"></div>
+                <span>All Sensors Online</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Topbar -->
+        <header class="topbar">
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                <input type="text" id="searchInput" placeholder="Search street or address for local AQI...">
+            </div>
+
+            <div class="user-profile">
+                <!-- Simple user placeholder -->
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <button style="background: none; border: none; color: #fff; margin-right: 10px; cursor: pointer;">
+                        <i class="fa-solid fa-bell" style="font-size: 18px;"></i>
+                    </button>
+                    <div style="text-align: right;">
+                        <div style="font-weight: 600; font-size: 14px;">Alex Rivera</div>
+                        <div style="font-size: 10px; color: var(--success);">Environmental Lead</div>
+                    </div>
+                    <div style="width: 36px; height: 36px; background: #333; border-radius: 50%; overflow: hidden;">
+                        <img src="https://ui-avatars.com/api/?name=Alex+Rivera&background=0D8ABC&color=fff" alt="User">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="dashboard-container">
+            <div class="grid-layout">
+                <!-- Map Card -->
+                <div class="card map-card">
+                    <!-- Placeholder for Map Image/API -->
+                    <div id="map" style="width: 100%; height: 100%; position: absolute; top:0; left:0;"></div>
+
+                    <!-- Controls (Fake) -->
+                    <div
+                        style="position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px;">
+                        <button
+                            style="width: 30px; height: 30px; background: #333; color: #fff; border: none; border-radius: 4px;">+</button>
+                        <button
+                            style="width: 30px; height: 30px; background: #333; color: #fff; border: none; border-radius: 4px;">-</button>
+                    </div>
+
+                    <div class="map-overlay">
+                        <h4 style="margin-bottom: 5px; font-size: 10px; color: var(--success); letter-spacing: 1px;">
+                            STREET VIEW:
+                            CHENNAI</h4>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 32px; font-weight: 700;">38</span>
+                            <span
+                                style="background: rgba(0, 227, 150, 0.2); color: var(--success); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600;">GOOD</span>
+                        </div>
+                        <p class="text-xs text-muted" style="margin-top: 5px;">Predictive data suggests a 12% rise in
+                            PM2.5 over the
+                            next 3 hours.</p>
+                    </div>
+                </div>
+
+                <!-- Right Side Stats -->
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+
+                    <!-- AQI Score -->
+                    <div class="card stat-card">
+                        <div class="stat-header">
+                            <span class="text-muted text-xs">Live AQI Score</span>
+                            <i class="fa-solid fa-wind text-muted"></i>
+                        </div>
+                        <div>
+                            <div class="stat-value">42</div>
+                            <div style="font-size: 14px; font-weight: 600; color: var(--success);">EXCELLENT</div>
+                            <div class="text-xs text-muted">-5% vs last hr</div>
+                        </div>
+                    </div>
+
+                    <!-- CO Concentration -->
+                    <div class="card stat-card">
+                        <div class="stat-header">
+                            <span class="text-muted text-xs">CO Concentration</span>
+                            <span style="font-size: 10px; color: #666;">CO2</span>
+                        </div>
+                        <div>
+                            <div style="display: flex; align-items: baseline; gap: 4px;">
+                                <span style="font-size: 32px; font-weight: 700; color: #fff;">1.2</span>
+                                <span class="text-muted text-xs">ppm</span>
+                                <span class="trend-up" style="margin-left: 5px;">↑ 2%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Temp/Humidity -->
+                    <div class="card stat-card">
+                        <div class="stat-header">
+                            <span class="text-muted text-xs">Temp / Humidity</span>
+                            <i class="fa-solid fa-temperature-half text-muted"></i>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                            <div>
+                                <div style="font-size: 24px; font-weight: 700; color: #fff;">24°C</div>
+                                <div style="width: 60px; height: 3px; background: var(--success); margin-top: 5px;">
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-size: 24px; font-weight: 700; color: #fff;">55%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Charts -->
+                <div class="chart-container-full">
+                    <!-- 24 Hour Prediction -->
+                    <div class="card chart-card">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 style="font-size: 16px;">24-Hour AQI Prediction</h3>
+                            <select
+                                style="background: #000; color: #fff; border: 1px solid #333; padding: 4px; border-radius: 4px; font-size: 12px;">
+                                <option>Linear Forecast</option>
+                            </select>
+                        </div>
+                        <div
+                            style="height: 150px; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px;">
+                            <!-- Mock Bars -->
+                            <div style="flex: 1; height: 40%; background: #1a3a2a; border-radius: 4px;"></div>
+                            <div style="flex: 1; height: 60%; background: #1a3a2a; border-radius: 4px;"></div>
+                            <div
+                                style="flex: 1; height: 100%; background: #5a4b18; border-radius: 4px; position: relative;">
+                                <!-- Trend line overlay mock -->
+                                <div
+                                    style="position: absolute; width: 100%; top: 50%; border-top: 2px solid #8B8000; transform: rotate(-20deg);">
+                                </div>
+                            </div>
+                            <div style="flex: 1; height: 50%; background: #1a3a2a; border-radius: 4px;"></div>
+                            <div style="flex: 1; height: 30%; background: #1a3a2a; border-radius: 4px;"></div>
+                        </div>
+                        <div
+                            style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 10px; color: #666;">
+                            <span>08:00</span>
+                            <span>12:00</span>
+                            <span>16:00</span>
+                            <span>20:00</span>
+                            <span>00:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Weekly Trend -->
+                    <div class="card chart-card">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 style="font-size: 16px;">Weekly Trend Analysis</h3>
+                            <i class="fa-solid fa-ellipsis-vertical text-muted"></i>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <!-- Row -->
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="width: 30px; font-size: 10px; color: #888;">MON</span>
+                                <div
+                                    style="flex: 1; height: 8px; background: #222; border-radius: 4px; overflow: hidden;">
+                                    <div
+                                        style="width: 80%; height: 100%; background: var(--success); border-radius: 4px;">
+                                    </div>
+                                </div>
+                                <span style="font-size: 12px; color: var(--success); width: 20px;">32</span>
+                            </div>
+                            <!-- Row -->
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="width: 30px; font-size: 10px; color: #888;">TUE</span>
+                                <div
+                                    style="flex: 1; height: 8px; background: #222; border-radius: 4px; overflow: hidden;">
+                                    <div
+                                        style="width: 70%; height: 100%; background: var(--success); border-radius: 4px;">
+                                    </div>
+                                </div>
+                                <span style="font-size: 12px; color: var(--success); width: 20px;">45</span>
+                            </div>
+                            <!-- Row -->
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="width: 30px; font-size: 10px; color: #888;">WED</span>
+                                <div
+                                    style="flex: 1; height: 8px; background: #222; border-radius: 4px; overflow: hidden;">
+                                    <div
+                                        style="width: 90%; height: 100%; background: var(--warning); border-radius: 4px;">
+                                    </div>
+                                </div>
+                                <span style="font-size: 12px; color: var(--warning); width: 20px;">82</span>
+                            </div>
+                            <!-- Row -->
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="width: 30px; font-size: 10px; color: #888;">THU</span>
+                                <div
+                                    style="flex: 1; height: 8px; background: #222; border-radius: 4px; overflow: hidden;">
+                                    <div
+                                        style="width: 60%; height: 100%; background: var(--success); border-radius: 4px;">
+                                    </div>
+                                </div>
+                                <span style="font-size: 12px; color: var(--success); width: 20px;">51</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="static/js/app.js"></script>
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="static/js/map.js"></script>
+</body>
+
+</html>
