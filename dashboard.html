@@ -78,7 +78,10 @@
             <div class="user-profile">
                 <!-- Simple user placeholder -->
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <button style="background: none; border: none; color: #fff; margin-right: 10px; cursor: pointer;">
+                    <button id="themeToggle" class="icon-btn" style="margin-right: 10px;">
+                        <i class="fa-solid fa-sun" style="font-size: 18px;"></i>
+                    </button>
+                    <button class="icon-btn" style="margin-right: 10px;">
                         <i class="fa-solid fa-bell" style="font-size: 18px;"></i>
                     </button>
                     <div style="text-align: right;">
@@ -140,36 +143,27 @@
                         </div>
                     </div>
 
-                    <!-- CO Concentration -->
+                    <!-- Temperature -->
                     <div class="card stat-card">
                         <div class="stat-header">
-                            <span class="text-muted text-xs">CO Concentration</span>
-                            <span style="font-size: 10px; color: #666;">CO2</span>
+                            <span class="text-muted text-xs">Temperature</span>
+                            <i class="fa-solid fa-temperature-half text-muted"></i>
                         </div>
                         <div>
-                            <div style="display: flex; align-items: baseline; gap: 4px;">
-                                <span style="font-size: 32px; font-weight: 700; color: #fff;">1.2</span>
-                                <span class="text-muted text-xs">ppm</span>
-                                <span class="trend-up" style="margin-left: 5px;">↑ 2%</span>
+                            <div class="stat-value">24°C</div>
+                            <div style="width: 60px; height: 3px; background: var(--success); margin-top: 5px;">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Temp/Humidity -->
+                    <!-- Humidity -->
                     <div class="card stat-card">
                         <div class="stat-header">
-                            <span class="text-muted text-xs">Temp / Humidity</span>
-                            <i class="fa-solid fa-temperature-half text-muted"></i>
+                            <span class="text-muted text-xs">Humidity</span>
+                            <i class="fa-solid fa-droplet text-muted"></i>
                         </div>
-                        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
-                            <div>
-                                <div style="font-size: 24px; font-weight: 700; color: #fff;">24°C</div>
-                                <div style="width: 60px; height: 3px; background: var(--success); margin-top: 5px;">
-                                </div>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="font-size: 24px; font-weight: 700; color: #fff;">55%</div>
-                            </div>
+                        <div>
+                            <div class="stat-value">55%</div>
                         </div>
                     </div>
 

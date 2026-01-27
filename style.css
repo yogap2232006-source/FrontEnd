@@ -8,6 +8,32 @@
     --warning: #FEB019;
     --success: #00E396;
     --font-family: 'Inter', sans-serif;
+    --border-dim: rgba(255, 255, 255, 0.1);
+
+    /* Blog Form - Dark (Default) */
+    --modal-bg: #0f1614;
+    --modal-border: rgba(80, 250, 123, 0.2);
+    --modal-header-bg: rgba(0, 0, 0, 0.2);
+    --text-modal: #ffffff;
+    --input-bg: rgba(255, 255, 255, 0.03);
+    --drop-bg: rgba(0, 227, 150, 0.02);
+}
+
+:root.light-mode {
+    --bg-dark: #F0F2F5;
+    --bg-card: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5C5C5C;
+    --border-dim: rgba(0, 0, 0, 0.08);
+    --table-header-bg: rgba(0, 0, 0, 0.03);
+
+    /* Blog Form - Light Mode */
+    --modal-bg: #FFFFFF;
+    --modal-border: rgba(0, 0, 0, 0.1);
+    --modal-header-bg: #F8F9FA;
+    --text-modal: #1A1A1A;
+    --input-bg: #F0F2F5;
+    --drop-bg: rgba(0, 227, 150, 0.05);
 }
 
 * {
@@ -30,7 +56,7 @@ body {
     width: 260px;
     background-color: var(--bg-dark);
     /* OR same as body for seamless look */
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid var(--border-dim);
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -169,7 +195,7 @@ body {
     background-color: var(--bg-card);
     border-radius: 16px;
     padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-dim);
 }
 
 .map-card {
@@ -289,7 +315,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-dim);
 }
 
 .search-input {
@@ -334,7 +360,7 @@ body {
 .table-container {
     background: var(--bg-card);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-dim);
     overflow: hidden;
 }
 
@@ -342,8 +368,8 @@ body {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1.5fr 0.5fr 0.8fr 0.7fr;
     padding: 15px 20px;
-    background: rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--table-header-bg);
+    border-bottom: 1px solid var(--border-dim);
     font-size: 10px;
     font-weight: 700;
     color: var(--text-secondary);
@@ -579,7 +605,7 @@ body {
 }
 
 .sensor-card {
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-dim);
     background: #17221E;
     /* Slightly lighter than page bg */
     border-radius: 12px;
@@ -639,7 +665,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border-dim);
     padding-top: 15px;
     margin-top: 5px;
     margin-bottom: 0px;
@@ -675,4 +701,200 @@ body {
 
 .btn-dark-overlay:hover {
     background: #1A2622;
+}
+
+/* --- Blog Page Styles --- */
+
+/* Layout */
+.blog-container {
+    padding: 0 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.blog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.blog-header h2 {
+    margin: 0;
+}
+
+.post-form-container {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Components */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-dim);
+    border-radius: 8px;
+    padding: 12px;
+    color: var(--text-primary);
+    outline: none;
+    font-family: var(--font-family);
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-color: var(--success);
+}
+
+/* Dark Green Design Specifics */
+.dark-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+.dark-input:focus {
+    border-color: var(--success);
+    box-shadow: 0 0 0 2px rgba(0, 227, 150, 0.1);
+}
+
+.drag-drop-zone.green-drop {
+    border: 2px dashed rgba(0, 227, 150, 0.3);
+    background: rgba(0, 227, 150, 0.02);
+    border-radius: 8px;
+    padding: 40px;
+    transition: all 0.3s ease;
+}
+
+.drag-drop-zone.green-drop:hover {
+    background: rgba(0, 227, 150, 0.05);
+    border-color: var(--success);
+}
+
+.btn-outline.green-outline {
+    border: 1px solid var(--success);
+    color: var(--success);
+    background: transparent;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-outline.green-outline:hover {
+    background: rgba(0, 227, 150, 0.1);
+}
+
+.btn-primary.green-solid {
+    background: var(--success);
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 24px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.btn-primary.green-solid:hover {
+    background: #00c482;
+    transform: translateY(-1px);
+}
+
+/* Theme-Aware Blog Classes */
+.modal-card {
+    background: var(--modal-bg) !important;
+    padding: 0;
+    border: 1px solid var(--modal-border);
+    overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.modal-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--border-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--modal-header-bg);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-modal) !important;
+}
+
+.modal-label {
+    font-weight: 700;
+    color: var(--text-modal) !important;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.success-icon {
+    color: var(--success);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.drop-text-primary {
+    font-size: 14px;
+    color: var(--text-modal);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.drop-text-secondary {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.modal-footer {
+    padding: 20px 30px;
+    border-top: 1px solid var(--border-dim);
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    background: var(--modal-header-bg);
+}
+
+.dark-input {
+    background: var(--input-bg);
+    border: 1px solid var(--border-dim);
+    color: var(--text-modal);
+}
+
+.drag-drop-zone.green-drop {
+    background: var(--drop-bg);
+    border-color: rgba(0, 227, 150, 0.3);
 }

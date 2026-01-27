@@ -6,14 +6,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }).setView([13.0856, 80.2379], 13);
 
     // Add Dark Matter Tiles (CartoDB) - Free and nice dark theme
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    // Base Map Layers
+    const darkTiles = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+    const lightTiles = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+
+    // Determine initial theme
+    const isLight = document.documentElement.classList.contains('light-mode') || localStorage.getItem('theme') === 'light';
+    const initialTiles = isLight ? lightTiles : darkTiles;
+
+    const tileLayer = L.tileLayer(initialTiles, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: 'abcd',
         maxZoom: 20
     }).addTo(map);
 
+    // Listen for Theme Changes
+    window.addEventListener('themeChanged', (e) => {
+        const theme = e.detail.theme;
+        if (theme === 'light') {
+            tileLayer.setUrl(lightTiles);
+        } else {
+            tileLayer.setUrl(darkTiles);
+        }
+    });
+
     // Add Marker
-    let marker = L.marker([13.0856, 80.2379]).addTo(map);
+    let marker = L.marker([13.0856, 80.2379]).addTo(map)
+        .bindPopup('<b>Sensor 1</b><br>Status: Online', {
+            autoClose: false,
+            closeOnClick: false
+        })
+        .openPopup();
+
+    // Add Sensor 2 Marker
+    L.marker([13.0774, 80.2425]).addTo(map)
+        .bindPopup('<b>Sensor 2</b><br>Status: Online')
+        .openPopup();
 
     // Add Custom Zoom Control to match the UI placement
     L.control.zoom({
