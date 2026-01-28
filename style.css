@@ -898,3 +898,489 @@ body {
     background: var(--drop-bg);
     border-color: rgba(0, 227, 150, 0.3);
 }
+
+/* --- Analytics Chart Styles --- */
+.chart-main-container {
+    background: var(--bg-card);
+    transition: background-color 0.3s ease;
+}
+
+.chart-toggles {
+    background: var(--input-bg);
+    /* Use theme variable */
+}
+
+.toggle-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.chart-filter {
+    background: transparent;
+    color: var(--text-primary);
+    border: none;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    cursor: pointer;
+}
+
+.chart-filter option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+.toggle-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.toggle-btn.active {
+    background: var(--success) !important;
+    color: #000 !important;
+    font-weight: 600;
+}
+
+/* --- Settings Toggle Switch --- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    /* Default/Off State */
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    /* This can be used instead of .knob span if we want standard simplified structure, 
+       but we have .knob span in HTML so let's style that instead, or use this for the knob.
+       The HTML uses a separate span.knob. Let's target that. */
+    content: "";
+    /* formatting compat */
+}
+
+/* Targeting the separate knob span */
+.knob {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    /* Start position (Off) */
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Checked State */
+input:checked+.slider {
+    background-color: var(--success);
+}
+
+input:checked~.knob {
+    transform: translateX(20px);
+    /* Move knob */
+}
+
+/* Light Mode Specifics if needed, or rely on var() 
+   If Off state needs to be lighter in light mode: */
+/* --- Heatmap Styles --- */
+.heatmap-wrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.heatmap-labels-y {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 5px;
+    /* align with cells */
+    font-size: 10px;
+    color: var(--text-secondary);
+    height: 200px;
+    /* Approximate height of grid */
+}
+
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    /* 24 Hours */
+    grid-template-rows: repeat(7, 1fr);
+    /* 7 Days */
+    gap: 4px;
+    flex: 1;
+    height: 200px;
+}
+
+.heat-cell {
+    border-radius: 4px;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.heat-cell:hover {
+    transform: scale(1.1);
+    z-index: 10;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Notification Styles --- */
+.badge-dot {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--danger);
+    border-radius: 50%;
+    border: 1px solid var(--bg-card);
+}
+
+.badge-dot.hidden {
+    display: none;
+}
+
+.notification-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 300px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-dim);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease;
+}
+
+.notification-dropdown.hidden {
+    display: none;
+}
+
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.notif-list {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.notif-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.notif-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.notif-item.danger {
+    border-left: 3px solid var(--danger);
+    background: rgba(255, 69, 96, 0.05);
+}
+
+.notif-icon {
+    color: var(--danger);
+}
+
+/* --- Minimalist Blog Card Redesign (Medium-style) --- */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+    margin-top: 30px;
+    padding-bottom: 40px;
+}
+
+.blog-card {
+    background: transparent;
+    /* No background card */
+    border: none;
+    /* No border */
+    overflow: visible;
+    /* Allow content to flow */
+    transition: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.blog-img-container {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+    /* Minimal radius */
+    margin-bottom: 16px;
+}
+
+.blog-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-img {
+    transform: scale(1.05);
+    /* Gentle zoom */
+}
+
+.blog-content {
+    padding: 0;
+    /* No padding */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Author/Category Line */
+.blog-meta-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.author-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.blog-meta-author span {
+    font-weight: 500;
+}
+
+.blog-meta-author strong {
+    font-weight: 700;
+}
+
+/* Title */
+.blog-title {
+    font-size: 20px;
+    font-weight: 800;
+    /* Heavy weight */
+    margin-bottom: 6px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+/* Description */
+.blog-desc {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    font-weight: 400;
+    max-height: 48px;
+    /* 2 lines max roughly */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* Footer (Date, Stats, Bookmark) */
+.blog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: none;
+    padding-top: 0;
+    margin-top: auto;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.blog-footer-left {
+    display: flex;
+    align-items: center;
+    /* gap: 15px; */
+    /* Adjusted gap */
+    gap: 12px;
+}
+
+.star-icon {
+    color: var(--warning);
+    font-size: 14px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stat i {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.blog-footer-right i {
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.blog-footer-right i:hover {
+    color: var(--text-primary);
+}
+
+/* Hide old styles if they conflict/persist */
+.blog-meta-top {
+    display: none;
+}
+
+/* --- Responsive Design --- */
+
+/* Tablet Breakpoint */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+    }
+
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+
+    /* Topbar adjustments */
+    .topbar {
+        left: 0;
+        width: 100%;
+        padding: 0 15px;
+        justify-content: space-between;
+    }
+
+    .search-bar {
+        display: none;
+        /* Hide search on mobile for space */
+    }
+
+    .menu-toggle {
+        display: block;
+        /* Show hamburger menu */
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Sidebar - Slide in */
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1001;
+        width: 260px;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar.mobile-visible {
+        transform: translateX(0);
+    }
+
+    /* Overlay */
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Content adjustments */
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 80px 15px 20px;
+        /* More top padding for fixed header */
+    }
+
+    /* Grid Stacking */
+    .grid-layout,
+    .analytics-grid,
+    .sensor-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Hide less critical info */
+    .user-profile div[style*="text-align: right;"] {
+        display: none;
+        /* Hide name/role text */
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+}
