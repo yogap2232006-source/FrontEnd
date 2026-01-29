@@ -19,6 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Close sidebar when clicking a link on mobile
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('mobile-visible');
+                if (overlay) overlay.classList.remove('active');
+            }
+        });
+    });
+
     fetchDashboardData();
     setInterval(fetchDashboardData, 30000); // Poll every 30 seconds
 
